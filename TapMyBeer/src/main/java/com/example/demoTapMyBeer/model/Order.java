@@ -17,7 +17,7 @@ public class Order {
 	@Column(name = "customerId")
 	private long customerId;
 
-	//May need to be FK
+	//May need to be F
 	@Column(name = "yearId")
 	private long yearId;
 	
