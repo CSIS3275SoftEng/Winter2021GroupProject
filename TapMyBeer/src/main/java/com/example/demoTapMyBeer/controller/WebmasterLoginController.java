@@ -23,8 +23,8 @@ import com.example.demoTapMyBeer.response.MessageResponse;
 @RequestMapping("/api")
 public class WebmasterLoginController {
 	
-	@Autowired // the object will be created and be ready to use it and access data in db
-	WebmasterRepository webmasterRepository; // to handle c-r-u-d operations in this controller
+	@Autowired
+	WebmasterRepository webmasterRepository;
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@Valid @RequestBody WebmasterLoginRequest loginRequest) {
