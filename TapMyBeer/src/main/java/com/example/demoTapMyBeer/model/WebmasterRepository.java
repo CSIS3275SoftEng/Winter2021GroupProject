@@ -9,8 +9,6 @@ public interface WebmasterRepository extends JpaRepository<Webmaster, Long> {
 	
 	List<Webmaster> findByWebmasterName(String webmasterName);
 	
-	//List<Webmaster> findByWebmasterId(String webmasterId);
-
 	Optional<Webmaster> findByWebmasterId(String webmasterId);
 	
 	Boolean existsByWebmasterId(String webmasterId);
