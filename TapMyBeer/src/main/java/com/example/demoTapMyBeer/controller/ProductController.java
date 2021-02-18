@@ -63,7 +63,7 @@ public class ProductController {
 	@PostMapping("/products")
 	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
 		try {
-			Product _product = productRepository.save(new Product(product.getName(), product.getNumInventory()));
+			Product _product = productRepository.save(new Product(product.getName(), product.getNumInventory(), product.getPrice()));
 			return new ResponseEntity<>(_product, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -77,7 +77,7 @@ public class ProductController {
 		if (productData.isPresent()) {
 			Product _product = productData.get();
 			_product.setName(product.getName());
-			_product.setNumInventory(product.setNumInventory());
+			_product.setNumInventory(product.getNumInventory());
 			return new ResponseEntity<>(productRepository.save(_product), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
