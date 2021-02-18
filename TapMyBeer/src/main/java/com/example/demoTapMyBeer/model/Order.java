@@ -71,7 +71,7 @@ public class Order {
 	public long getYearId() {
 		return yearId;
 	}
-
+	
 	public void setYearId(long yearId) {
 		this.yearId = yearId;
 	}
