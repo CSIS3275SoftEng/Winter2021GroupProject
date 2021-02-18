@@ -35,13 +35,25 @@ public class Order {
 	
 	@Column(name = "quantity")
 	private int quantity;
+	
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+
+	@Column(name = "payment")
+	private String payment;
 
 	public Order() {
 
 	}
 
 	public Order(long orderId, long customerId, long yearId, long monthId, long dayId,
-	long productId, int quantity ) {
+	long productId, int quantity, String payment ) {
 		
 		this.orderId = orderId;
 		this.customerId = customerId;
@@ -50,6 +62,7 @@ public class Order {
 		this.dayId = dayId;
 		this.productId = productId;
 		this.quantity = quantity;
+		this.payment = payment;
 	}
 
 	public long getOrderId() {
@@ -71,7 +84,7 @@ public class Order {
 	public long getYearId() {
 		return yearId;
 	}
-
+	
 	public void setYearId(long yearId) {
 		this.yearId = yearId;
 	}
