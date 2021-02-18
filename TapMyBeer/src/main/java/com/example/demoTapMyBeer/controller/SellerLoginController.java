@@ -13,28 +13,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demoTapMyBeer.model.Seller;
+import com.example.demoTapMyBeer.model.SellerRepository;
 import com.example.demoTapMyBeer.model.Webmaster;
 import com.example.demoTapMyBeer.model.WebmasterRepository;
+import com.example.demoTapMyBeer.request.SellerLoginRequest;
 import com.example.demoTapMyBeer.request.WebmasterLoginRequest;
 import com.example.demoTapMyBeer.response.MessageResponse;
 
 @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
-public class WebmasterLoginController {
+public class SellerLoginController {
 	
 	@Autowired
-	WebmasterRepository webmasterRepository;
+	SellerRepository sellerRepository;
 	
-	@PostMapping("/loginWebmaster")
-	public ResponseEntity<?> login(@Valid @RequestBody WebmasterLoginRequest loginRequest) {
+	@PostMapping("/loginSeller")
+	public ResponseEntity<?> login(@Valid @RequestBody SellerLoginRequest loginRequest) {
 		
 		try {
-			Optional<Webmaster> webmasterData = webmasterRepository.findByWebmasterId(loginRequest.getWebmasterId());
-			if(webmasterData.isPresent()) {
-				String password = webmasterData.get().getWebmasterPassword();
-				if(password.equals(loginRequest.getWebmPassword())) {
-					return new ResponseEntity<>(webmasterData.get(), HttpStatus.OK);
+			Optional<Seller> sellerData = sellerRepository.findBySellerId(loginRequest.getSellerId());
+			if(sellerData.isPresent()) {
+				String password = sellerData.get().getSellerPassword();
+				if(password.equals(loginRequest.getSellerPassword())) {
+					return new ResponseEntity<>(sellerData.get(), HttpStatus.OK);
 				}
 				MessageResponse msg = new MessageResponse("Incorrect password");
 				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);

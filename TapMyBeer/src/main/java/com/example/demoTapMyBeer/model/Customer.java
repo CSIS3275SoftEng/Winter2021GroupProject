@@ -25,7 +25,7 @@ public class Customer {
 	private String customerAddress;
 	
 	@Column(name = "creditCardNum")
-	private int customerCard;
+	private String customerCardNum;
 
 	@Column(name = "username")
 	private String customerUsername;
@@ -37,15 +37,15 @@ public class Customer {
 		
 	}
 	
-	public Customer(String customerFName, String customerLName, String customerAddress, int customerCard, String customerUsername, String customerPassword) {
+	public Customer(String customerFName, String customerLName, String customerAddress, String customerCardNum, String customerUsername, String customerPassword) {
 		this.customerFName = customerFName;
 		this.customerLName = customerLName;
 		this.customerAddress = customerAddress;
-		this.customerCard = customerCard;
+		this.customerCardNum = customerCardNum;
 		this.customerUsername = customerUsername;
 		this.customerPassword = customerPassword;
 	}
-	
+
 	public long getCustomerId() {
 		return customerId;
 	}
@@ -78,12 +78,12 @@ public class Customer {
 		this.customerAddress = customerAddress;
 	}
 
-	public int getCustomerCard() {
-		return customerCard;
+	public String getCustomerCard() {
+		return customerCardNum;
 	}
 
-	public void setCustomerCard(int customerCard) {
-		this.customerCard = customerCard;
+	public void setCustomerCard(String customerCardNum) {
+		this.customerCardNum = customerCardNum;
 	}
 
 	public String getCustomerUsername() {
