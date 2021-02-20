@@ -15,11 +15,8 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long customerId;
 	
-	@Column(name = "firstName")
-	private String customerFName;
-	
-	@Column(name = "lastName")
-	private String customerLName;
+	@Column(name = "name")
+	private String customerName;
 	
 	@Column(name = "address")
 	private String customerAddress;
@@ -37,9 +34,8 @@ public class Customer {
 		
 	}
 	
-	public Customer(String customerFName, String customerLName, String customerAddress, String customerCardNum, String customerUsername, String customerPassword) {
-		this.customerFName = customerFName;
-		this.customerLName = customerLName;
+	public Customer(String customerName, String customerAddress, String customerCardNum, String customerUsername, String customerPassword) {
+		this.customerName = customerName;
 		this.customerAddress = customerAddress;
 		this.customerCardNum = customerCardNum;
 		this.customerUsername = customerUsername;
@@ -54,20 +50,12 @@ public class Customer {
 		this.customerId = customerId;
 	}
 
-	public String getCustomerFName() {
-		return customerFName;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setCustomerFName(String customerFName) {
-		this.customerFName = customerFName;
-	}
-
-	public String getCustomerLName() {
-		return customerLName;
-	}
-
-	public void setCustomerLName(String customerLName) {
-		this.customerLName = customerLName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public String getCustomerAddress() {

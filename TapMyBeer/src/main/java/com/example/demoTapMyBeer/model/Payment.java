@@ -27,11 +27,14 @@ public class Payment {
 	@Column(name = "Customer Name")
 	private String custName;
 	
+	/*
 	@Column(name = "Exp Date")
 	private String expDate;
 
 	@Column(name = "Security No")
-	private String cvc;
+	private String cvc;*/
+	
+	Customer customer;
 	
 	public Payment() {
 	}
@@ -40,9 +43,10 @@ public class Payment {
 			String cardNo, String custName, String expDate, String cvc){
 		this.payType = payType;
 		this.bank = bank;
-		this.cardNo = cardNo;
-		this.expDate = expDate;
-		this.cvc = cvc;
+		this.cardNo = customer.getCustomerCard();
+		this.custName = customer.getCustomerName();
+		/*this.expDate = expDate;
+		this.cvc = cvc;*/
 		
 		
 	}
@@ -71,7 +75,7 @@ public class Payment {
 		this.bank = bank;
 	}
 
-	public String getCardNo() {
+	/*public String getCardNo() {
 		return cardNo;
 	}
 
@@ -101,7 +105,7 @@ public class Payment {
 
 	public void setCvc(String cvc) {
 		this.cvc = cvc;
-	}
+	}*/
 	
 	
 	

@@ -28,8 +28,7 @@ public class Product {
 
 	}
 
-	public Product(long productId, String name, int numInventory, float price) {
-		this.productId = productId;
+	public Product(String name, int numInventory, float price) {
 		this.name = name;
 		this.numInventory = numInventory;
 		this.price = price;
