@@ -29,13 +29,13 @@ public class CustomerController {
 	
 	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> getAllCustomers(
-			@RequestParam(required = false) String lastName){
+			@RequestParam(required = false) String name){
 		try {
 			List<Customer> customers = new ArrayList<Customer>();
-			if(lastName == null) {
+			if(name == null) {
 				customerRepository.findAll().forEach(customers::add);
 			} else {
-				customerRepository.findByCustomerLName(lastName).forEach(customers::add);
+				customerRepository.findByCustomerName(name).forEach(customers::add);
 			}
 			if(customers.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);

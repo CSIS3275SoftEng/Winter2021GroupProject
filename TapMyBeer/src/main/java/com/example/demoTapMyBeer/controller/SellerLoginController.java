@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoTapMyBeer.model.Seller;
 import com.example.demoTapMyBeer.model.SellerRepository;
-import com.example.demoTapMyBeer.model.Webmaster;
-import com.example.demoTapMyBeer.model.WebmasterRepository;
 import com.example.demoTapMyBeer.request.SellerLoginRequest;
-import com.example.demoTapMyBeer.request.WebmasterLoginRequest;
 import com.example.demoTapMyBeer.response.MessageResponse;
 
 @CrossOrigin(origins = "http://localhost:8081")

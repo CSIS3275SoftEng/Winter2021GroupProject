@@ -15,19 +15,19 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long customerId;
 	
-	@Column(name = "name")
+	@Column(name = "Customer Name")
 	private String customerName;
 	
-	@Column(name = "address")
+	@Column(name = "Address")
 	private String customerAddress;
 	
-	@Column(name = "creditCardNum")
+	@Column(name = "Card Number")
 	private String customerCardNum;
 
-	@Column(name = "username")
+	@Column(name = "Username")
 	private String customerUsername;
 	
-	@Column(name = "password")
+	@Column(name = "Password")
 	private String customerPassword;
 	
 	public Customer() {
