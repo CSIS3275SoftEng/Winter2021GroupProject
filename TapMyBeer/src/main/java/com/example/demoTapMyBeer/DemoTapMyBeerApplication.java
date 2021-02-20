@@ -25,10 +25,10 @@ public class DemoTapMyBeerApplication {
 		return args -> {
 			
 			// 1 -Customers populating tables
-			Customer[] customers = { new Customer("Andrea", "Abjaud", "87 Dane Street, Vancouver, BC, V4R 1T5", "4333 1233 4566 7865", "andreaa", "12345"),
-					new Customer("Joel", "Giladi", "5664-A Aurora Road, Langley, BC, V7T 9S3", "5435 8876 3421 9078", "joelg", "12346"), 
-					new Customer("Zoe", "Nguyen", "990-45 River Lane, Burnaby, BC, V7X 5K8", "7766 4573 9675 1010", "zoen", "12347"), 
-					new Customer("Eduardo", "Silva", "121-899 Queens Avenue, Abbottsford, BC, V2O 2P7", "9900 3322 7788 2121", "eduardos", "12348") };
+			Customer[] customers = { new Customer("Andrea Abjaud", "87 Dane Street, Vancouver, BC, V4R 1T5", "4333 1233 4566 7865", "andreaa", "12345"),
+					new Customer("Joel Giladi", "5664-A Aurora Road, Langley, BC, V7T 9S3", "5435 8876 3421 9078", "joelg", "12346"), 
+					new Customer("Zoe Nguyen", "990-45 River Lane, Burnaby, BC, V7X 5K8", "7766 4573 9675 1010", "zoen", "12347"), 
+					new Customer("Eduardo Silva", "121-899 Queens Avenue, Abbottsford, BC, V2O 2P7", "9900 3322 7788 2121", "eduardos", "12348") };
 
 			for (int i = 0; i < customers.length; i++) {
 				customerRepository.save(customers[i]);
