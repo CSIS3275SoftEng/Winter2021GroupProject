@@ -15,17 +15,14 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long customerId;
 	
-	@Column(name = "firstName")
-	private String customerFName;
-	
-	@Column(name = "lastName")
-	private String customerLName;
+	@Column(name = "name")
+	private String customerName;
 	
 	@Column(name = "address")
 	private String customerAddress;
 	
 	@Column(name = "creditCardNum")
-	private int customerCard;
+	private String customerCard;
 
 	@Column(name = "username")
 	private String customerUsername;
@@ -37,9 +34,8 @@ public class Customer {
 		
 	}
 	
-	public Customer(String customerFName, String customerLName, String customerAddress, int customerCard, String customerUsername, String customerPassword) {
-		this.customerFName = customerFName;
-		this.customerLName = customerLName;
+	public Customer(String customerName, String customerAddress, String customerCard, String customerUsername, String customerPassword) {
+		this.customerName = customerName;
 		this.customerAddress = customerAddress;
 		this.customerCard = customerCard;
 		this.customerUsername = customerUsername;
@@ -54,20 +50,12 @@ public class Customer {
 		this.customerId = customerId;
 	}
 
-	public String getCustomerFName() {
-		return customerFName;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setCustomerFName(String customerFName) {
-		this.customerFName = customerFName;
-	}
-
-	public String getCustomerLName() {
-		return customerLName;
-	}
-
-	public void setCustomerLName(String customerLName) {
-		this.customerLName = customerLName;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public String getCustomerAddress() {
@@ -78,11 +66,11 @@ public class Customer {
 		this.customerAddress = customerAddress;
 	}
 
-	public int getCustomerCard() {
+	public String getCustomerCard() {
 		return customerCard;
 	}
 
-	public void setCustomerCard(int customerCard) {
+	public void setCustomerCard(String customerCard) {
 		this.customerCard = customerCard;
 	}
 

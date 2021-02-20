@@ -29,13 +29,13 @@ public class CustomerController {
 	
 	@GetMapping("/customers")
 	public ResponseEntity<List<Customer>> getAllCustomers(
-			@RequestParam(required = false) String lastName){
+			@RequestParam(required = false) String name){
 		try {
 			List<Customer> customers = new ArrayList<Customer>();
-			if(lastName == null) {
+			if(name == null) {
 				customerRepository.findAll().forEach(customers::add);
 			} else {
-				customerRepository.findByCustomerLName(lastName).forEach(customers::add);
+				customerRepository.findByCustomerName(name).forEach(customers::add);
 			}
 			if(customers.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -61,7 +61,7 @@ public class CustomerController {
 	@PostMapping("/customers")
 	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
 		try {
-			Customer _customer = customerRepository.save(new Customer(customer.getCustomerFName(), customer.getCustomerLName(), customer.getCustomerAddress(), customer.getCustomerCard(), customer.getCustomerUsername(), customer.getCustomerPassword()));
+			Customer _customer = customerRepository.save(new Customer(customer.getCustomerName(), customer.getCustomerAddress(), customer.getCustomerCard(), customer.getCustomerUsername(), customer.getCustomerPassword()));
 			return new ResponseEntity<>(_customer, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -74,8 +74,7 @@ public class CustomerController {
 		 
 		 if(customerData.isPresent()) {
 			Customer _customer = customerData.get();
-			_customer.setCustomerFName(customer.getCustomerFName());
-			_customer.setCustomerLName(customer.getCustomerLName());
+			_customer.setCustomerName(customer.getCustomerName());
 			_customer.setCustomerAddress(customer.getCustomerAddress());
 			_customer.setCustomerCard(customer.getCustomerCard());
 			_customer.setCustomerUsername(customer.getCustomerUsername());

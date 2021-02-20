@@ -8,10 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	Optional<Customer> findByCustomerId(String customerId);
-	
-	List<Customer> findByCustomerFName(String customerFName);
-	
-	List<Customer> findByCustomerLName(String customerLName);
+		
+	List<Customer> findByCustomerName(String customerName);
 	
 	Boolean existsByCustomerId(String customerId);
 }
