@@ -64,5 +64,9 @@ public class Product {
 		this.quantity = quantity;
 	}
 	
+	@Override
+	public String toString() {
+		return "Product: " + this.name + " " + this.price + " " + this.quantity;
+	}
 
 }

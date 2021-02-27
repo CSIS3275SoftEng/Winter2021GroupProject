@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-
+	List<Order> findByOrderId(long orderId);
+	
 	List<Order> findByYearId(long yearId);
 
 	List<Order> findByMonthId(long monthId);
@@ -16,5 +17,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	List<Order> findByProductId(long productId);
 	
 	List<Order> findByQuantity(int quantity);
+	
+	List<Order> findByPaymentId(long paymentId);
 	
 }

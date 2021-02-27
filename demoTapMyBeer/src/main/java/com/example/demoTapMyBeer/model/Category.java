@@ -22,18 +22,15 @@ public class Category {
 
 	}
 
-	public Category(long categoryId, String name) {
-		this.categoryId = categoryId;
+	public Category(String name) {
 		this.name = name;
 	}
 
-
-
-	public long getWarehouseId() {
+	public long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setWarehouseId(long categoryId) {
+	public void setCategoryId(long categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -45,9 +42,5 @@ public class Category {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Warehouse: " + this.name + " " + this.categoryId;
-	}
 
 }

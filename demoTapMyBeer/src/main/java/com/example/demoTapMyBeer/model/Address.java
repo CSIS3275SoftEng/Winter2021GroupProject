@@ -102,6 +102,11 @@ package com.example.demoTapMyBeer.model;
 			this.postalCode = postalCode;
 		}
 		
+		@Override
+		public String toString() {
+			return "Customer " + this.customerId + " has the address located at " + this.addNo + " " + this.street
+					+ ", " + this.city + ", " + this.province + ", " + this.postalCode ;
+		}
 		
 		
 }

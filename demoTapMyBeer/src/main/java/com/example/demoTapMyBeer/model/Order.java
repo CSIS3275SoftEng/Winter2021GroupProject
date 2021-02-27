@@ -36,34 +36,27 @@ public class Order {
 	@Column(name = "quantity")
 	private int quantity;
 	
-	public String getPayment() {
-		return payment;
-	}
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
+	@Column(name = "paymentId")
+	private long paymentId;
 
 
-	@Column(name = "payment")
-	private String payment;
 
 	public Order() {
 
 	}
 
-	public Order(long orderId, long customerId, long yearId, long monthId, long dayId,
-	long productId, int quantity, String payment ) {
+	public Order(long customerId, long yearId, long monthId, long dayId,
+	long productId, int quantity, long paymentId ) {
 		
-		this.orderId = orderId;
 		this.customerId = customerId;
 		this.yearId = yearId;
 		this.monthId = monthId;
 		this.dayId = dayId;
 		this.productId = productId;
 		this.quantity = quantity;
-		this.payment = payment;
+		this.paymentId = paymentId;
 	}
+
 
 	public long getOrderId() {
 		return orderId;
@@ -84,7 +77,7 @@ public class Order {
 	public long getYearId() {
 		return yearId;
 	}
-	
+
 	public void setYearId(long yearId) {
 		this.yearId = yearId;
 	}
@@ -121,6 +114,13 @@ public class Order {
 		this.quantity = quantity;
 	}
 
+	public long getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(long paymentId) {
+		this.paymentId = paymentId;
+	}
 
 	@Override
 	public String toString() {

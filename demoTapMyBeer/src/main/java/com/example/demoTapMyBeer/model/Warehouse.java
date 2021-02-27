@@ -29,8 +29,7 @@ public class Warehouse {
 
 	}
 
-	public Warehouse(long warehouseId, String name, String wAddress, int numInventory) {
-		this.warehouseId = warehouseId;
+	public Warehouse(String name, String wAddress, int numInventory) {
 		this.wAddress = wAddress;
 		this.name = name;
 		this.numInventory = numInventory;

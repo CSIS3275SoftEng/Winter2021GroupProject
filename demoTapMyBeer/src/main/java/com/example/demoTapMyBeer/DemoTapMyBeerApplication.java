@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.demoTapMyBeer.model.Address;
+import com.example.demoTapMyBeer.model.AddressRepository;
 import com.example.demoTapMyBeer.model.Product;
 import com.example.demoTapMyBeer.model.ProductRepository;
 
@@ -16,10 +18,13 @@ public class DemoTapMyBeerApplication {
 	}
 	
 	@Bean
-	ApplicationRunner init(ProductRepository repository) {
+	ApplicationRunner init(ProductRepository productRepository, AddressRepository addressRepository) {
 		return args -> {
-			repository.save(new Product("Stella Artois (6-pack)", 12.99, 20 ));
-			repository.findAll().forEach(System.out::println);
+			productRepository.save(new Product("Stella Artois (6-pack)", 12.99, 20 ));
+			productRepository.findAll().forEach(System.out::println);
+			
+			addressRepository.save(new Address(1, 63,"Broadway","Burnaby","BC","V4B2A4"));
+			addressRepository.findAll().forEach(System.out::println);
 		};
 	}
 
