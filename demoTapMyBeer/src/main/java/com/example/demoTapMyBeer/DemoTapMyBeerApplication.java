@@ -7,11 +7,15 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.demoTapMyBeer.model.Address;
 import com.example.demoTapMyBeer.model.AddressRepository;
+import com.example.demoTapMyBeer.model.Category;
+import com.example.demoTapMyBeer.model.CategoryRepository;
 import com.example.demoTapMyBeer.model.Customer;
 import com.example.demoTapMyBeer.model.CustomerRepository;
 import com.example.demoTapMyBeer.model.OrderRepository;
 import com.example.demoTapMyBeer.model.Product;
 import com.example.demoTapMyBeer.model.ProductRepository;
+import com.example.demoTapMyBeer.model.Seller;
+import com.example.demoTapMyBeer.model.SellerRepository;
 import com.example.demoTapMyBeer.model.Webmaster;
 import com.example.demoTapMyBeer.model.WebmasterRepository;
 
@@ -24,7 +28,7 @@ public class DemoTapMyBeerApplication {
 	
 	@Bean
 	ApplicationRunner init(ProductRepository productRepository, AddressRepository addressRepository, OrderRepository orderRepository, 
-			CustomerRepository customerRepository, WebmasterRepository webmasterRepository) {
+			CustomerRepository customerRepository, WebmasterRepository webmasterRepository, SellerRepository sellerRepository, CategoryRepository categoryRepository) {
 		return args -> {
 			productRepository.save(new Product("Stella Artois (6-pack)", 12.99, 20 ));
 			productRepository.findAll().forEach(System.out::println);
@@ -60,10 +64,33 @@ public class DemoTapMyBeerApplication {
 			//	orderRepository.save(orders[i]);
 			//}
 			
+			// populate Sellers
+			Seller[] sellers = { new Seller("Lennox Pub", "lennox_pub", "9090"),
+									new Seller("The Moose", "moose", "4444"),
+									new Seller("Johnnie Fox's Irish Snug", "johnnie_foxs", "1010") };
+								
+			// populate Categories
+			Category[] categories = { new Category("Lager"),
+										new Category("Stout"),
+										new Category("Pilsen"),
+										new Category("IPA") };
+						
+			
+			for (int i = 0; i < sellers.length; i++) {
+				sellerRepository.save(sellers[i]);
+			}
+			
+			for (int i = 0; i < categories.length; i++) {
+				categoryRepository.save(categories[i]);
+			}
+			
 			for (int i = 0; i < customers.length; i++) {
 				customerRepository.save(customers[i]);
 			}
 
+			
+			sellerRepository.findAll().forEach(System.out::println);
+			categoryRepository.findAll().forEach(System.out::println);
 			customerRepository.findAll().forEach(System.out::println);
 		
 		};
