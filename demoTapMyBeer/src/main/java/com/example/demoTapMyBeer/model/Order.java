@@ -2,10 +2,15 @@ package com.example.demoTapMyBeer.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "orders")
@@ -13,9 +18,14 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long orderId;
+	
+	@Column(name = "number")
+	private int orderNumber;
 
-	@Column(name = "customerId")
-	private long customerId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "customer_id", nullable = false)
+	@JsonIgnore
+	private Customer customer;
 
 	//May need to be FK
 	@Column(name = "yearId")
@@ -29,34 +39,36 @@ public class Order {
 	@Column(name = "dayId")
 	private long dayId;
 
-	// May need to be FK
-	@Column(name = "productId")
-	private long productId;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "product_id", nullable = false)
+	@JsonIgnore
+	private Product product;
+	
 	
 	@Column(name = "quantity")
 	private int quantity;
 	
-	@Column(name = "paymentId")
-	private long paymentId;
-
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "payment_id", nullable = false)
+	@JsonIgnore
+	private Payment payment;
+	
 
 
 	public Order() {
 
 	}
 
-	public Order(long customerId, long yearId, long monthId, long dayId,
-	long productId, int quantity, long paymentId ) {
+	public Order( long yearId, long monthId, long dayId, int quantity) {
 		
-		this.customerId = customerId;
 		this.yearId = yearId;
 		this.monthId = monthId;
 		this.dayId = dayId;
-		this.productId = productId;
 		this.quantity = quantity;
-		this.paymentId = paymentId;
 	}
-
+	
+	
 
 	public long getOrderId() {
 		return orderId;
@@ -66,12 +78,20 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	public long getCustomerId() {
-		return customerId;
+	public int getOrderNumber() {
+		return orderNumber;
 	}
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
+	public void setOrderNumber(int orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public long getYearId() {
@@ -98,12 +118,12 @@ public class Order {
 		this.dayId = dayId;
 	}
 
-	public long getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(long productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getQuantity() {
@@ -114,18 +134,18 @@ public class Order {
 		this.quantity = quantity;
 	}
 
-	public long getPaymentId() {
-		return paymentId;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setPaymentId(long paymentId) {
-		this.paymentId = paymentId;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 	@Override
 	public String toString() {
-		return "Order: " + this.customerId + " " + this.yearId + " " + this.monthId + " " + this.dayId + " "
-				+ this.productId + this.quantity;
+		return "Order: " + this.customer + " " + this.yearId + " " + this.monthId + " " + this.dayId + " "
+				+ this.product + this.quantity;
 	}
 
 }

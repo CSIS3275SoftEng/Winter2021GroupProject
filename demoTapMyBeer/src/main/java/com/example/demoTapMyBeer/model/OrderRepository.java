@@ -14,10 +14,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	
 	List<Order> findByDayId(long dayId);
 	
-	List<Order> findByProductId(long productId);
-	
 	List<Order> findByQuantity(int quantity);
-	
-	List<Order> findByPaymentId(long paymentId);
 	
 }

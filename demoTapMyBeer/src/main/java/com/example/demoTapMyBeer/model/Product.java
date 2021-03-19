@@ -1,10 +1,16 @@
 package com.example.demoTapMyBeer.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +18,7 @@ import javax.persistence.Table;
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long product_id;
 	
 	@Column(name = "name")
 	private String name;
@@ -23,6 +29,17 @@ public class Product {
 	@Column(name = "quantity")
 	private int quantity;
 	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Order> orders = new HashSet<>();
+	
+	public Set<Order> getOrders() {
+		return orders;
+	}
+	
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}
+	
 	public Product() {
 	}
 	
@@ -32,12 +49,12 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public long getId() {
-		return id;
+	public long getProductId() {
+		return product_id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProductId(long product_id) {
+		this.product_id = product_id;
 	}
 
 	public String getName() {
