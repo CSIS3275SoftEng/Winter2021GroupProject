@@ -39,10 +39,10 @@ public class Order {
 	@Column(name = "dayId")
 	private long dayId;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "product_id", nullable = false)
-	@JsonIgnore
-	private Product product;
+	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	//@JoinColumn(name = "product_id", nullable = false)
+	//@JsonIgnore
+	//private Product product;
 	
 	
 	@Column(name = "quantity")
@@ -118,6 +118,7 @@ public class Order {
 		this.dayId = dayId;
 	}
 
+	/*
 	public Product getProduct() {
 		return product;
 	}
@@ -125,6 +126,7 @@ public class Order {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	*/
 
 	public int getQuantity() {
 		return quantity;
@@ -142,10 +144,10 @@ public class Order {
 		this.payment = payment;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Order: " + this.customer + " " + this.yearId + " " + this.monthId + " " + this.dayId + " "
 				+ this.product + this.quantity;
-	}
+	}*/
 
 }
