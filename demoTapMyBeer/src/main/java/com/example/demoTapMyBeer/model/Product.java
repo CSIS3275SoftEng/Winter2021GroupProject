@@ -1,17 +1,15 @@
 package com.example.demoTapMyBeer.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="products")
@@ -29,18 +27,37 @@ public class Product {
 	@Column(name = "quantity")
 	private int quantity;
 	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Order> orders = new HashSet<>();
-	
-	public Set<Order> getOrders() {
-		return orders;
+	//
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "categoryId", nullable = true)
+	@JsonIgnore
+	//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    //@JsonIgnoreProperties(value = {"categories", "hibernateLazyInitializer"})
+	private Category category;
+
+	public Category getCategory() {
+		return category;
 	}
 	
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
+	
+	//
+	//private Set<Order> orders = new HashSet<>();
+	
+	//public Set<Order> getOrders() {
+	//	return orders;
+	//}
+	
+	//public void setOrders(Set<Order> orders) {
+	//	this.orders = orders;
+	//}
+	
+	//
 	public Product() {
+		
 	}
 	
 	public Product(String name, double price, int quantity) {
