@@ -52,7 +52,37 @@ public class AssignedCategoryController {
 		}
 	}
 	
-	
+	/*
+	@PostMapping("/{pid}/category")
+	public ResponseEntity<?> addRemoveCategory(@PathVariable("pid") Long pid, @Valid @RequestBody CategoryAssignmentRequest assignmentRequest){
+		try {
+				String action = assignmentRequest.getAction();
+				Long categoryId = assignmentRequest.getCategoryId();
+				Optional<Product> productData = productRepository.findById(pid);
+				if(productData.isPresent()) {
+					Product product = productData.get();
+					Optional<Category> categoryData = categoryRepository.findById(categoryId);
+						if(categoryData.isPresent()) {
+							Category category = categoryData.get();
+							if(action.equals("add")) {
+								category.addProduct(product);
+							} else if(action.equals("remove")) {
+								category.removeProduct(product);
+							}
+							category = categoryRepository.save(category);
+							return new ResponseEntity<>(category, HttpStatus.OK);
+						}else {
+							MessageResponse msg = new MessageResponse("The category does not exist.");
+							return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
+						}
+				}else {
+					MessageResponse msg = new MessageResponse("The product does not exist.");
+					return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
+				}
+			} catch (Exception e) {
+				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}	
+	}*/
 		
 	
 }

@@ -43,6 +43,20 @@ public class Product {
 		this.category = category;
 	}
 	
+	/*
+	// SELLER - PRODUCTS Relationship
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "sellerId", nullable = true)
+	@JsonIgnore
+	private Seller seller;
+
+	public Seller getSeller() {
+		return seller;
+	}
+	
+	public void setSeller(Seller seller) {
+		this.seller = seller;
+	}*/
 	
 	//
 	//private Set<Order> orders = new HashSet<>();

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demoTapMyBeer.model.Product;
 import com.example.demoTapMyBeer.model.ProductRepository;
+import com.example.demoTapMyBeer.model.SellerRepository;
 
 
 @RestController
@@ -27,6 +28,9 @@ public class ProductController {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	SellerRepository sellerRepository;
 
 	@GetMapping("/products")
 	public ResponseEntity<List<Product>> getAllProducts(@RequestParam(required = false) String name) {
@@ -61,6 +65,29 @@ public class ProductController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	// SELLER - PRODUCT Relationship
+	/*@GetMapping("/{sid}/products")
+	public ResponseEntity<?> findCategoryByProduct(@PathVariable("sid") Long sid, @RequestParam(required = false) Boolean assigned) {
+		try {
+			Optional<Product> productData = productRepository.findById(sid);
+			if (productData.isPresent()) {
+				Product product = productData.get();
+				Seller seller = product.get
+				if(assigned) {
+					return new ResponseEntity<>(assignedCategory, HttpStatus.OK);
+				}
+				else {
+					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				}
+			} else {
+				MessageResponse msg = new MessageResponse("This product does not exist.");
+				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}*/
 
 	@PostMapping("/products")
 	public ResponseEntity<Product> createTutorial(@RequestBody Product product) {
