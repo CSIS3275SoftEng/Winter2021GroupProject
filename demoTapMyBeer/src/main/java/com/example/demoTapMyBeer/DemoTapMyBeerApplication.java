@@ -21,8 +21,8 @@ import com.example.demoTapMyBeer.model.Webmaster;
 import com.example.demoTapMyBeer.model.WebmasterRepository;
 
 //@SpringBootApplication
-@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 //@EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 public class DemoTapMyBeerApplication {
 
 	public static void main(String[] args) {
@@ -59,6 +59,12 @@ public class DemoTapMyBeerApplication {
 									new Seller("Green Leaf Brew", "green_leaf", "4444"),
 									new Seller("Steamworks Brewing Company", "steamy", "6732"),
 									new Seller("Steel & Oak Brewing Company", "s&o", "1010") };
+			
+			// Sellers
+			for (int i = 0; i < sellers.length; i++) {
+				sellerRepository.save(sellers[i]);
+			}
+
 		
 			
 			// populate Categories
@@ -97,6 +103,21 @@ public class DemoTapMyBeerApplication {
 					
 			}
 			
+			sellers[0].addProduct(products[0]);
+			sellers[1].addProduct(products[1]);
+			sellers[2].addProduct(products[2]);
+			sellers[3].addProduct(products[3]);
+			sellers[0].addProduct(products[4]);
+			sellers[1].addProduct(products[5]);
+			sellers[2].addProduct(products[6]);
+			sellers[3].addProduct(products[7]);
+			sellers[0].addProduct(products[8]);
+			sellers[1].addProduct(products[9]);
+			sellers[2].addProduct(products[10]);
+			sellers[3].addProduct(products[11]);
+			sellers[0].addProduct(products[12]);
+			sellers[1].addProduct(products[13]);
+			
 			categories[3].addProduct(products[0]); // seller: dageraad
 			categories[4].addProduct(products[1]); // seller: dageraad
 			categories[2].addProduct(products[2]); // seller: dageraad
@@ -116,24 +137,9 @@ public class DemoTapMyBeerApplication {
 				categoryRepository.save(categories[i]);
 			}
 			
-			sellers[0].addProduct(products[0]);
-			sellers[1].addProduct(products[1]);
-			sellers[2].addProduct(products[2]);
-			sellers[3].addProduct(products[3]);
-			sellers[0].addProduct(products[4]);
-			sellers[1].addProduct(products[5]);
-			sellers[2].addProduct(products[6]);
-			sellers[3].addProduct(products[7]);
-			sellers[0].addProduct(products[8]);
-			sellers[1].addProduct(products[9]);
-			sellers[2].addProduct(products[10]);
-			sellers[3].addProduct(products[11]);
-			sellers[0].addProduct(products[12]);
-			sellers[1].addProduct(products[13]);
 			
 			
-
-
+			
 			
 			// --->>>> Saving the populations to the db
 			// Webmaster
@@ -150,8 +156,6 @@ public class DemoTapMyBeerApplication {
 
 			customerRepository.findAll().forEach(System.out::println);
 			
-			sellerRepository.findAll().forEach(System.out::println);
-
 			// Products
 //			for (int i = 0; i < products.length; i++) {
 //				productRepository.save(products[i]);
@@ -166,12 +170,12 @@ public class DemoTapMyBeerApplication {
 			
 			categoryRepository.findAll().forEach(System.out::println);
 
-			
-			
 			// Sellers
-			for (int i = 0; i < sellers.length; i++) {
-				sellerRepository.save(sellers[i]);
-			}
+			sellerRepository.findAll().forEach(System.out::println);
+
+			
+			
+			
 			
 			// DISCARDED
 			// populate Orders

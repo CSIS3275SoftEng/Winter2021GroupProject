@@ -43,7 +43,6 @@ public class Product {
 		this.category = category;
 	}
 	
-	/*
 	// SELLER - PRODUCTS Relationship
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "sellerId", nullable = true)
@@ -56,7 +55,7 @@ public class Product {
 	
 	public void setSeller(Seller seller) {
 		this.seller = seller;
-	}*/
+	}
 	
 	//
 	//private Set<Order> orders = new HashSet<>();
