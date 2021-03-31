@@ -66,28 +66,6 @@ public class ProductController {
 		}
 	}
 	
-	// SELLER - PRODUCT Relationship
-	/*@GetMapping("/{sid}/products")
-	public ResponseEntity<?> findCategoryByProduct(@PathVariable("sid") Long sid, @RequestParam(required = false) Boolean assigned) {
-		try {
-			Optional<Product> productData = productRepository.findById(sid);
-			if (productData.isPresent()) {
-				Product product = productData.get();
-				Seller seller = product.get
-				if(assigned) {
-					return new ResponseEntity<>(assignedCategory, HttpStatus.OK);
-				}
-				else {
-					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				}
-			} else {
-				MessageResponse msg = new MessageResponse("This product does not exist.");
-				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
-			}
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}*/
 
 	@PostMapping("/products")
 	public ResponseEntity<Product> createTutorial(@RequestBody Product product) {
