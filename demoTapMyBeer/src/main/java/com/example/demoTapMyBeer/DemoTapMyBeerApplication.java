@@ -133,6 +133,7 @@ public class DemoTapMyBeerApplication {
 			categories[2].addProduct(products[12]); // seller: steel & oak
 			categories[2].addProduct(products[13]); // seller: steel & oak
 			
+			
 			for (int i = 0; i < categories.length; i++) {
 				categoryRepository.save(categories[i]);
 			}

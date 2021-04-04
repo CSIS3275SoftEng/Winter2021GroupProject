@@ -27,7 +27,7 @@ public class Product {
 	@Column(name = "quantity")
 	private int quantity;
 	
-	//
+	// Categories
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "categoryId", nullable = true)
 	@JsonIgnore
@@ -78,7 +78,14 @@ public class Product {
 		this.price = price;
 		this.quantity = quantity;
 	}
-
+	
+	public Product(long product_id, String name, double price, int quantity) {
+		this.product_id = product_id;
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
 	public long getProductId() {
 		return product_id;
 	}

@@ -1,6 +1,10 @@
 package com.example.demoTapMyBeer.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +49,33 @@ public class ProductBySellerController {
 				}
 			} else {
 				MessageResponse msg = new MessageResponse("This product does not exist.");
+				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	// getProductsBySeller
+	// NEW API
+	@GetMapping("/{sid}/products")
+	public ResponseEntity<?> findProductsBySeller(@PathVariable("sid") Long sid, @RequestParam(required = false) Boolean hasProducts) {
+		try {
+			Optional<Seller> sellerData = sellerRepository.findById(sid);
+			if (sellerData.isPresent()) {
+				Seller seller = sellerData.get();
+				Set<Product> assignedProducts = seller.getProducts();
+				if(hasProducts) {
+					return new ResponseEntity<>(assignedProducts, HttpStatus.OK);
+				}
+				Set<Product> unassProds = new HashSet<Product>(productRepository.findAll());
+				unassProds.removeAll(assignedProducts);
+				if (unassProds.isEmpty()) {
+					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				}
+				return new ResponseEntity<>(unassProds, HttpStatus.OK);
+			} else {
+				MessageResponse msg = new MessageResponse("No products");
 				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
 			}
 		} catch (Exception e) {
