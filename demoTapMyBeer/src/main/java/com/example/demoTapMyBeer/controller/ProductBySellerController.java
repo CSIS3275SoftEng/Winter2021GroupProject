@@ -1,8 +1,6 @@
 package com.example.demoTapMyBeer.controller;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,13 +32,16 @@ public class ProductBySellerController {
 	
 	// SELLER - PRODUCT Relationship
 	// NEW API
-	@GetMapping("/{pid}/seller")
+	@GetMapping("products/{pid}/seller")
 	public ResponseEntity<?> findProductBySeller(@PathVariable("pid") Long pid, @RequestParam(required = false) Boolean hasSeller) {
 		try {
 			Optional<Product> productData = productRepository.findById(pid);
 			if (productData.isPresent()) {
 				Product product = productData.get();
 				Seller productSeller = product.getSeller();
+				if(productSeller != null) {
+					hasSeller = true;
+				}
 				if(hasSeller) {
 					return new ResponseEntity<>(productSeller, HttpStatus.OK);
 				}
@@ -52,19 +53,23 @@ public class ProductBySellerController {
 				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			MessageResponse msg = new MessageResponse("Uh oh... it would seem our try catch failed");
+			return new ResponseEntity<>(msg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+		
 	// getProductsBySeller
 	// NEW API
-	@GetMapping("/{sid}/products")
+	@GetMapping("/sellers/{sid}/products")
 	public ResponseEntity<?> findProductsBySeller(@PathVariable("sid") Long sid, @RequestParam(required = false) Boolean hasProducts) {
 		try {
 			Optional<Seller> sellerData = sellerRepository.findById(sid);
 			if (sellerData.isPresent()) {
 				Seller seller = sellerData.get();
 				Set<Product> assignedProducts = seller.getProducts();
+				if(assignedProducts != null) {
+					hasProducts = true;
+				}
 				if(hasProducts) {
 					return new ResponseEntity<>(assignedProducts, HttpStatus.OK);
 				}
@@ -79,7 +84,8 @@ public class ProductBySellerController {
 				return new ResponseEntity<>(msg, HttpStatus.FORBIDDEN);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			MessageResponse msg = new MessageResponse("Uh oh... it would seem our try catch failed");
+			return new ResponseEntity<>(msg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
