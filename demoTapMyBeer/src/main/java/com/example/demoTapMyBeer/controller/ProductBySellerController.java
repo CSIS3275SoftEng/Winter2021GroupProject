@@ -32,7 +32,7 @@ public class ProductBySellerController {
 	
 	// SELLER - PRODUCT Relationship
 	// NEW API
-	@GetMapping("products/{pid}/seller")
+	@GetMapping("/products/{pid}/seller")
 	public ResponseEntity<?> findProductBySeller(@PathVariable("pid") Long pid, @RequestParam(required = false) Boolean hasSeller) {
 		try {
 			Optional<Product> productData = productRepository.findById(pid);

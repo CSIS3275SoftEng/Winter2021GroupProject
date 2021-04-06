@@ -30,7 +30,7 @@ public class CategoryController {
 	CategoryRepository categoryRepository;
 	
 	@GetMapping("/categories")
-	public ResponseEntity<List<Category>> getAllCategorys(@RequestParam(required = false) String name) {
+	public ResponseEntity<List<Category>> getAllCategories(@RequestParam(required = false) String name) {
 		try {
 			List<Category> categories = new ArrayList<Category>();
 			if(name == null)
