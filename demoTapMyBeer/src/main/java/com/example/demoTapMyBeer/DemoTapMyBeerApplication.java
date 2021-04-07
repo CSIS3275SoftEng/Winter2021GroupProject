@@ -89,7 +89,7 @@ public class DemoTapMyBeerApplication {
 				products[1] = new Product("Imperial Session Kveik IPA (4-pack cans)", 15.35, 30);
 				products[2] = new Product("Multigrain Dry-Hopped Pale Ale (4-pack cans)", 16.50, 10);
 				products[3] = new Product("Dry-Hopped Belgian-Style Pale Ale (4-pack cans)", 16.50, 15);
-				products[4] = new Product("Imperial Stout with Caao & Miso 650ml bottle", 10.74, 15);
+				products[4] = new Product("Imperial Stout with Cacao & Miso 650ml bottle", 10.74, 15);
 				products[5] = new Product("Amber 650ml bottle", 6.54, 50);
 				products[6] = new Product("Blonde 650ml bottle", 7.29, 20);
 				products[7] = new Product("Burnabarian 650ml bottle", 6.08, 70);
